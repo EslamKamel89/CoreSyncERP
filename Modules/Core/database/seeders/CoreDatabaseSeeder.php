@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Database\Seeders;
+namespace Modules\Core\database\seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
@@ -31,5 +31,8 @@ class CoreDatabaseSeeder extends Seeder {
                 ],
             ]);
         }
+        $this->call([
+            RolePermissionSeeder::class
+        ]);
     }
 }
