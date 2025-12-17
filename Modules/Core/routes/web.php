@@ -5,6 +5,4 @@ use Modules\Core\Http\Controllers\CoreController;
 
 
 
-Route::get('/core-test', function () {
-    return response()->json(['message' => 'core module loaded']);
-});
+Route::view('/dashboard', 'core::dashboard');
