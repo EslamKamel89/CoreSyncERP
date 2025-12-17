@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ app()->getLocale() }}" class="light">
 
 <head>
     <meta charset="utf-8" />
@@ -17,22 +17,46 @@
     <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @fluxAppearance
 
 </head>
 
 <body class="min-h-screen bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside class="w-64 bg-white border-r">
-            Sidebar
+        <aside class="w-64 bg-white border-r flex flex-col">
+            <div class="h-16 flex items-center px-6 border-b">
+                <x-flux::heading size="lg">
+                    ERP
+                </x-flux::heading>
+            </div>
+
+            <nav class="flex-1 px-3 py-4 space-y-1">
+                <x-flux::button variant="ghost" class="w-full justify-start cursor-pointer">
+                    Dashboard
+                </x-flux::button>
+            </nav>
         </aside>
+
 
         <!-- Main area -->
         <div class="flex-1 flex flex-col">
             <!-- Top bar -->
-            <header class="h-16 bg-white border-b">
-                Top Bar
+            <header class="h-16 bg-white border-b flex items-center justify-between px-6">
+                <div>
+                    <x-flux::heading size="sm">
+                        Dashboard
+                    </x-flux::heading>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <x-flux::badge>
+                        Admin
+                    </x-flux::badge>
+
+                    <x-flux::avatar
+                        name="{{ auth()->user()?->name }}"
+                        size="sm" />
+                </div>
             </header>
 
             <!-- Page content -->
