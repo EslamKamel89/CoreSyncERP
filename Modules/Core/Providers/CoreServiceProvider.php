@@ -4,6 +4,8 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Modules\Core\Livewire\TopBar\UserMenu;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -25,6 +27,14 @@ class CoreServiceProvider extends ServiceProvider {
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->name, 'database/migrations'));
+        $this->registerLivewire();
+    }
+
+    public function registerLivewire(): void {
+        Livewire::component(
+            'core.top-bar.user-menu',
+            UserMenu::class
+        );
     }
 
     /**

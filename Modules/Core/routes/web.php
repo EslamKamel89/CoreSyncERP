@@ -5,4 +5,4 @@ use Modules\Core\Http\Controllers\CoreController;
 
 
 
-Route::view('/dashboard', 'core::dashboard');
+Route::view('/dashboard', 'core::dashboard')->name('dashboard');

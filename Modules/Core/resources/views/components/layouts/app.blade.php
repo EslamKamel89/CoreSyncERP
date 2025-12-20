@@ -31,9 +31,11 @@
             </div>
 
             <nav class="flex-1 px-3 py-4 space-y-1">
-                <x-flux::button variant="ghost" class="w-full justify-start cursor-pointer">
-                    Dashboard
+                @foreach (config('core.navigation') as $item )
+                <x-flux::button variant="ghost" class="w-full justify-start cursor-pointer" :href="route($item['route'])">
+                    {{ $item['label'] }}
                 </x-flux::button>
+                @endforeach
             </nav>
         </aside>
 
@@ -48,15 +50,7 @@
                     </x-flux::heading>
                 </div>
 
-                <div class="flex items-center gap-3">
-                    <x-flux::badge>
-                        Admin
-                    </x-flux::badge>
-
-                    <x-flux::avatar
-                        name="{{ auth()->user()?->name }}"
-                        size="sm" />
-                </div>
+                <livewire:core.top-bar.user-menu />
             </header>
 
             <!-- Page content -->
