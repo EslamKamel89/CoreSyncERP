@@ -32,9 +32,50 @@
 
             <nav class="flex-1 px-3 py-4 space-y-1">
                 @foreach (config('core.navigation') as $item )
-                <x-flux::button variant="ghost" class="w-full justify-start cursor-pointer" :href="route($item['route'])">
+                @if (isset($item['children']))
+                @php
+                $hasActiveChild = collect($item['children'])
+                ->pluck('route')
+                ->contains(fn($route)=>request()->routeIs($route));
+                @endphp
+                <div x-data="{open:{{ $hasActiveChild ? 'true' : 'false' }} }" class="space-y-1">
+                    <button
+                        @click="open = !open"
+                        type="button"
+                        class="px-3 text-xs font-semibold text-gray-500 uppercase cursor-pointer flex flex-row justify-between w-full">
+                        <span>{{ $item['label'] }}</span>
+                        <div x-bind:class="{ 'transition-transform':true , '-rotate-180': open }">
+                            <flux:icon.chevron-down class="h-4 w-4" />
+                        </div>
+                    </button>
+                    <div class="space-y-1 pl-2" x-show="open" x-collapse>
+                        @foreach ($item['children'] as $child)
+                        @if (!isset($child['permission']) || auth()->user()?->can($child['permission']))
+                        @php
+                        $isActive = request()->routeIs($child['route']);
+                        @endphp
+                        <x-flux::button
+                            variant="{{ $isActive ? 'primary' : 'ghost' }}"
+                            size="sm"
+                            class="w-full justify-start cursor-pointer"
+                            :href="route($child['route'])">
+                            {{ $child['label'] }}
+                        </x-flux::button>
+                        @endif
+                        @endforeach
+                    </div>
+                </div>
+                @else
+                @php
+                $isActive = request()->routeIs($item['route'])
+                @endphp
+                <x-flux::button
+                    variant="{{ $isActive ? 'primary' : 'ghost' }}"
+                    size="sm"
+                    class="w-full justify-start cursor-pointer" :href="route($item['route'])">
                     {{ $item['label'] }}
                 </x-flux::button>
+                @endif
                 @endforeach
             </nav>
         </aside>

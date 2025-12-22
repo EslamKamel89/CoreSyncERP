@@ -24585,6 +24585,13 @@ namespace App\Livewire\Settings {
             }
     }
 
+namespace Modules\Core\Livewire\Settings {
+    /**
+     */
+    class CompanyProfile extends \Livewire\Component {
+            }
+    }
+
 
 namespace  {
     class App extends \Illuminate\Support\Facades\App {}

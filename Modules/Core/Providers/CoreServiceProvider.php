@@ -5,6 +5,7 @@ namespace Modules\Core\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Modules\Core\Livewire\Settings\CompanyProfile;
 use Modules\Core\Livewire\TopBar\UserMenu;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
@@ -34,6 +35,10 @@ class CoreServiceProvider extends ServiceProvider {
         Livewire::component(
             'core.top-bar.user-menu',
             UserMenu::class
+        );
+        Livewire::component(
+            'core.settings.company-profile',
+            CompanyProfile::class
         );
     }
 
