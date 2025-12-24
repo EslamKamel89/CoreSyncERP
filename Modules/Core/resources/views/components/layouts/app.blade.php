@@ -43,7 +43,7 @@
                         @click="open = !open"
                         type="button"
                         class="px-3 text-xs font-semibold text-gray-500 uppercase cursor-pointer flex flex-row justify-between w-full">
-                        <span>{{ $item['label'] }}</span>
+                        <span>{{ __($item['label']) }}</span>
                         <div x-bind:class="{ 'transition-transform':true , '-rotate-180': open }">
                             <flux:icon.chevron-down class="h-4 w-4" />
                         </div>
@@ -59,7 +59,7 @@
                             size="sm"
                             class="w-full justify-start cursor-pointer"
                             :href="route($child['route'])">
-                            {{ $child['label'] }}
+                            {{ __($child['label']) }}
                         </x-flux::button>
                         @endif
                         @endforeach
@@ -73,7 +73,7 @@
                     variant="{{ $isActive ? 'primary' : 'ghost' }}"
                     size="sm"
                     class="w-full justify-start cursor-pointer" :href="route($item['route'])">
-                    {{ $item['label'] }}
+                    {{ __($item['label']) }}
                 </x-flux::button>
                 @endif
                 @endforeach

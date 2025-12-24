@@ -1,0 +1,1 @@
+<flux:badge color="zinc" size="sm">Optional</flux:badge>

@@ -1,0 +1,1 @@
+<flux:badge color="red" size="sm">Required</flux:badge>
