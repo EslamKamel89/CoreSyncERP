@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}" class="light">
+<html lang="{{ app()->getLocale() }}" class="light" dir="{{ $textDirection }}">
 
 <head>
     <meta charset="utf-8" />

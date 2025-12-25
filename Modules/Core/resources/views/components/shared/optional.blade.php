@@ -1,1 +1,1 @@
-<flux:badge color="zinc" size="sm">Optional</flux:badge>
+<flux:badge color="zinc" size="sm">{{ __('core::shared.optional') }}</flux:badge>

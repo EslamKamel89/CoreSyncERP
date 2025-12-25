@@ -1,1 +1,1 @@
-<flux:badge color="red" size="sm">Required</flux:badge>
+<flux:badge color="red" size="sm">{{ __('core::shared.required') }}</flux:badge>
