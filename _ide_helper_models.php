@@ -16,6 +16,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string $email
+ * @property string $locale
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
  * @property string|null $two_factor_secret
@@ -40,6 +41,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereLocale($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
@@ -51,75 +53,5 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User withoutRole($roles, $guard = null)
  */
 	class User extends \Eloquent {}
-}
-
-namespace Modules\Core\Models{
-/**
- * @property int $id
- * @property string $name
- * @property string|null $legal_name
- * @property string|null $tax_number
- * @property string $base_currency
- * @property string $timezone
- * @property string $locale
- * @property string|null $fiscal_year_start
- * @property string|null $external_id
- * @property array<array-key, mixed>|null $meta
- * @property string $status
- * @property int|null $created_by
- * @property string|null $deleted_at
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Modules\Core\database\factories\CompanyFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereBaseCurrency($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereDeletedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereFiscalYearStart($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereLegalName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereLocale($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereMeta($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereTaxNumber($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereTimezone($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Company whereUpdatedAt($value)
- */
-	class Company extends \Eloquent {}
-}
-
-namespace Modules\Core\Models{
-/**
- * @property int $id
- * @property int|null $company_id
- * @property string $name
- * @property string|null $slug
- * @property string|null $external_id
- * @property array<array-key, mixed>|null $meta
- * @property string $status
- * @property int|null $created_by
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Modules\Core\database\factories\TagFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag query()
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereCompanyId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereCreatedBy($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereExternalId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereMeta($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereSlug($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereStatus($value)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereUpdatedAt($value)
- */
-	class Tag extends \Eloquent {}
 }
 
