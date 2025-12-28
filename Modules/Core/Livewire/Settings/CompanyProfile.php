@@ -6,9 +6,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\View\View;
 use Livewire\Component;
 use Modules\Core\Models\Company;
+use Modules\Core\Traits\NotifiesWithToast;
 
 class CompanyProfile extends Component {
     use AuthorizesRequests;
+    use NotifiesWithToast;
     public ?Company $company;
     public array $form = [];
     public function mount(): void {
@@ -47,6 +49,7 @@ class CompanyProfile extends Component {
             ]
         );
         $this->company->update($validated['form']);
+        $this->notifySaved();
     }
     public function render(): View {
         return view('core::livewire.settings.company-profile');

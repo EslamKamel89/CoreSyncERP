@@ -24,6 +24,7 @@ class UserMenu extends Component {
         $url =  redirect()->back()->getTargetUrl();
         $this->redirect($url, true);
     }
+
     public function render() {
         return view('core::livewire.top-bar.user-menu');
     }

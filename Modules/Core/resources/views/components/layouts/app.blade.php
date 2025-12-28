@@ -100,6 +100,7 @@
             </main>
         </div>
     </div>
+    <x-toaster-hub />
     @fluxScripts
 </body>
 
