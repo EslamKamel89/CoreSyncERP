@@ -23,14 +23,15 @@
 <body class="min-h-screen bg-gray-100">
     <div class="flex h-screen">
         <!-- Sidebar -->
-        <aside class="w-64 bg-white border-r flex flex-col">
-            <div class="h-16 flex items-center px-6 border-b">
+        <flux:sidebar sticky stashable class="border-e border-zinc-200 bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900">
+            <flux:sidebar.toggle class="lg:hidden" icon="x-mark" />
+            <div class="h-16 flex items-center  border-b">
                 <x-flux::heading size="lg">
                     ERP
                 </x-flux::heading>
             </div>
 
-            <nav class="flex-1 px-3 py-4 space-y-1">
+            <nav class="flex-1  py-4 space-y-1">
                 @foreach (config('core.navigation') as $item )
                 @if (isset($item['children']))
                 @php
@@ -78,11 +79,14 @@
                 @endif
                 @endforeach
             </nav>
-        </aside>
+        </flux:sidebar>
 
 
         <!-- Main area -->
         <div class="flex-1 flex flex-col">
+            <div class="mx-5">
+                <flux:sidebar.toggle class="lg:hidden" icon="bars-3" inset="left" />
+            </div>
             <!-- Top bar -->
             <header class="h-16 bg-white border-b flex items-center justify-between px-6">
                 <div>
