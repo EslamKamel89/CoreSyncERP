@@ -11,9 +11,39 @@
 |
 */
 
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
+
 pest()->extend(Tests\TestCase::class)
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
-    ->in('Feature');
+    ->beforeEach(function () {
+        \Modules\Core\Models\Company::factory()->create();
+        $permissions = [
+            'core.manage_settings',
+            'hr.access',
+            'inventory.access',
+            'accounting.access',
+        ];
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+        /** @var Role $admin */
+        $admin = Role::firstOrCreate(['name' => 'Admin']);
+        $hr = Role::firstOrCreate(['name' => 'HR Manager']);
+        $inventory = Role::firstOrCreate(['name' => 'Inventory Manager']);
+        $accountant = Role::firstOrCreate(['name' => 'Accountant']);
+        $admin->givePermissionTo(Permission::all());
+        $hr->givePermissionTo([$permissions[1]]);
+        $inventory->givePermissionTo([$permissions[2]]);
+        $accountant->givePermissionTo([$permissions[3]]);
+    })
+    ->in('Feature', 'Livewire');
+
+class PestHelper {
+    static function adminRole() {
+        return Role::where('name', 'admin')->firstOrFail();
+    }
+}
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +71,6 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function something()
-{
+function something() {
     // ..
 }

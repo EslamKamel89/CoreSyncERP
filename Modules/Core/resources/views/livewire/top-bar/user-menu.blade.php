@@ -7,7 +7,7 @@
                          name="{{ auth()->user()?->name }}"
                          size="sm" />
                      <div>
-                         {{ auth()->user()->roles[0]->name }}
+                         {{ auth()->user()->roles->first()?->name ?? __('core::shared.no_role_assigned') }}
                      </div>
                  </div>
              </x-flux::badge>

@@ -14,6 +14,11 @@ class CompanyFactory extends Factory {
      * Define the model's default state.
      */
     public function definition(): array {
-        return [];
+        return [
+            'name' => "Core Sync ERP",
+            'base_currency' => "egp",
+            'timezone' => 'Africa/Cairo',
+            'locale' => 'ar',
+        ];
     }
 }

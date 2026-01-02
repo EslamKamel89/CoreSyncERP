@@ -4,6 +4,7 @@ return [
     'required' => 'إلزامي',
     'optional' => 'اختياري',
     'language' => 'اللغة',
+    'no_role_assigned' => 'لا يوجد دور مُعيَّن',
     'alerts' => [
         // ✅ Success
         'saved' => 'تم حفظ التغييرات بنجاح.',

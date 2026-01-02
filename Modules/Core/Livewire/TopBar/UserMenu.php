@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class UserMenu extends Component {
-    public string $locale;
+    public ?string $locale = null;
     public array $availableLocales =  [];
     public function mount() {
         $this->locale = Auth::user()->locale;
