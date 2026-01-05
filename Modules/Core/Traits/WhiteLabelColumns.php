@@ -14,4 +14,25 @@ trait WhiteLabelColumns {
             ->constrained('users')
             ->nullOnDelete();
     }
+    protected function money(Blueprint $table, string $name, bool $nullable = false): void {
+        if ($nullable) {
+            $table->decimal($name, 14, 4)->nullable()->default(null);
+        } else {
+            $table->decimal($name, 14, 4);
+        }
+    }
+    protected function calculation(Blueprint $table, string $name, bool $nullable = false): void {
+        if ($nullable) {
+            $table->decimal($name, 16, 8)->nullable()->default(null);
+        } else {
+            $table->decimal($name, 16, 8);
+        }
+    }
+    protected function locale(Blueprint $table, string $name, bool $required = true): void {
+        if ($required) {
+            $table->json($name);
+        } else {
+            $table->json($name)->nullable();
+        }
+    }
 }

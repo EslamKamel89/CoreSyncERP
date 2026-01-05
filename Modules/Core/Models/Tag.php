@@ -31,7 +31,4 @@ class Tag extends Model {
     protected static function newFactory(): TagFactory {
         return TagFactory::new();
     }
-    public function taggables(): MorphToMany {
-        return $this->morphedByMany(Model::class, 'taggable');
-    }
 }
