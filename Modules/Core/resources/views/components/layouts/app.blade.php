@@ -31,7 +31,7 @@
                 </x-flux::heading>
             </div>
 
-            <nav class="flex-1  py-4 space-y-1">
+            <nav class="flex-1  py-4 space-y-4">
                 @foreach (config('core.navigation') as $item )
                 @if (isset($item['children']))
                 @php
@@ -44,19 +44,21 @@
                         @click="open = !open"
                         type="button"
                         class="px-3 text-xs font-semibold text-gray-500 uppercase cursor-pointer flex flex-row justify-between w-full">
+                        <flux:icon :name="$item['icon']" class="size-5" />
                         <span>{{ __($item['label']) }}</span>
                         <div x-bind:class="{ 'transition-transform':true , '-rotate-180': open }">
                             <flux:icon.chevron-down class="h-4 w-4" />
                         </div>
                     </button>
-                    <div class="space-y-1 pl-2" x-show="open" x-collapse>
+                    <div class="space-y-3 pl-2" x-show="open" x-collapse>
                         @foreach ($item['children'] as $child)
                         @if (!isset($child['permission']) || auth()->user()?->can($child['permission']))
                         @php
                         $isActive = request()->routeIs($child['route']);
                         @endphp
                         <x-flux::button
-                            variant="{{ $isActive ? 'primary' : 'ghost' }}"
+                            variant="{{ $isActive ? 'primary' : 'outline' }}"
+                            wire:navigate
                             size="sm"
                             class="w-full justify-start cursor-pointer"
                             :href="route($child['route'])">
@@ -73,7 +75,7 @@
                 <x-flux::button
                     variant="{{ $isActive ? 'primary' : 'ghost' }}"
                     size="sm"
-                    class="w-full justify-start cursor-pointer" :href="route($item['route'])">
+                    class="w-full justify-start cursor-pointer" :href="route($item['route'])" wire:navigate>
                     {{ __($item['label']) }}
                 </x-flux::button>
                 @endif

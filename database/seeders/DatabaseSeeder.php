@@ -6,6 +6,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Modules\Core\Database\Seeders\CoreDatabaseSeeder;
+use Modules\HR\Database\Seeders\HRDatabaseSeeder;
 
 class DatabaseSeeder extends Seeder {
     /**
@@ -13,12 +14,11 @@ class DatabaseSeeder extends Seeder {
      */
     public function run(): void {
 
-        User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
-        ]);
+
         $this->call([
             CoreDatabaseSeeder::class,
+            LocalAdminSeeder::class,
+            HRDatabaseSeeder::class
         ]);
     }
 }

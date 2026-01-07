@@ -7,9 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Modules\HR\Database\Factories\PositionFactory;
+use Modules\Core\Traits\JsonLocalizedSearch;
 
 class Position extends Model {
-    use HasFactory;
+    use HasFactory, JsonLocalizedSearch;
 
     /**
      * The attributes that are mass assignable.
@@ -18,6 +19,7 @@ class Position extends Model {
         'department_id',
         'grade_id',
         'name',
+        'is_active',
         "external_id",
         "meta",
         "status",

@@ -22,6 +22,11 @@ class PestHelper {
         return Permission::where('name', 'hr.access')->firstOrFail();
     }
 
+    public static function hrManageStructurePermission(): Permission {
+        return Permission::where('name', 'hr.manage_structure')->firstOrFail();
+    }
+
+
     public static function inventoryAccessPermission(): Permission {
         return Permission::where('name', 'inventory.access')->firstOrFail();
     }
@@ -44,6 +49,7 @@ class PestHelper {
         return Role::where('name', 'HR Manager')->firstOrFail();
     }
 
+
     public static function inventoryRole(): Role {
         return Role::where('name', 'Inventory Manager')->firstOrFail();
     }
@@ -65,6 +71,14 @@ class PestHelper {
 
         return $user;
     }
+    public static function hrUser(array $attributes = []): User {
+        $user = User::factory()->create($attributes);
+
+        $user->assignRole(self::hrRole());
+
+        return $user;
+    }
+
     public static function normalUser(array $attributes = []): User {
         return User::factory()->create($attributes);
     }

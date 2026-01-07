@@ -11,6 +11,7 @@
 |
 */
 
+use Modules\Core\database\seeders\RolePermissionSeeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 
@@ -18,24 +19,7 @@ pest()->extend(Tests\TestCase::class)
     ->use(Illuminate\Foundation\Testing\RefreshDatabase::class)
     ->beforeEach(function () {
         \Modules\Core\Models\Company::factory()->create();
-        $permissions = [
-            'core.manage_settings',
-            'hr.access',
-            'inventory.access',
-            'accounting.access',
-        ];
-        foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission]);
-        }
-        /** @var Role $admin */
-        $admin = Role::firstOrCreate(['name' => 'Admin']);
-        $hr = Role::firstOrCreate(['name' => 'HR Manager']);
-        $inventory = Role::firstOrCreate(['name' => 'Inventory Manager']);
-        $accountant = Role::firstOrCreate(['name' => 'Accountant']);
-        $admin->givePermissionTo(Permission::all());
-        $hr->givePermissionTo([$permissions[1]]);
-        $inventory->givePermissionTo([$permissions[2]]);
-        $accountant->givePermissionTo([$permissions[3]]);
+        (new RolePermissionSeeder())->run();
     })
     ->in('Feature', 'Livewire');
 

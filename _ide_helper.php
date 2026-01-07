@@ -24775,6 +24775,36 @@ namespace Modules\Core\Livewire\Settings {
             }
     }
 
+namespace Modules\HR\Livewire\Departments {
+    /**
+     */
+    class Index extends \Livewire\Component {
+            }
+    /**
+     */
+    class Create extends \Livewire\Component {
+            }
+    /**
+     */
+    class Edit extends \Livewire\Component {
+            }
+    }
+
+namespace Modules\HR\Livewire\Positions {
+    /**
+     */
+    class Index extends \Livewire\Component {
+            }
+    /**
+     */
+    class Create extends \Livewire\Component {
+            }
+    /**
+     */
+    class Edit extends \Livewire\Component {
+            }
+    }
+
 
 namespace  {
     class App extends \Illuminate\Support\Facades\App {}

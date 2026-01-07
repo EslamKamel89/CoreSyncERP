@@ -85,6 +85,26 @@ return [
         'icon'  => 'home',
     ],
     [
+        'key'   => 'hr',
+        'label' => 'core::navigation.hr',
+        'icon'  => 'users',
+        'permission' => 'hr.manage_structure',
+        'children' => [
+            [
+                'key'   => 'hr-departments',
+                'label' => 'core::navigation.departments',
+                'route' => 'hr.departments.index',
+                'permission' => 'hr.manage_structure',
+            ],
+            [
+                'key'   => 'hr-positions',
+                'label' => 'core::navigation.positions',
+                'route' => 'hr.positions.index',
+                'permission' => 'hr.manage_structure',
+            ],
+        ],
+    ],
+    [
         'key'   => 'settings',
         'label' => 'core::navigation.settings',
         'icon'  => 'cog',
@@ -97,4 +117,5 @@ return [
             ],
         ],
     ],
+
 ];
