@@ -13,13 +13,13 @@ $emptyLabel = $data['emptyLabel'] ?? null;
         <thead class="bg-gray-50">
             <tr>
                 @foreach ($headers as $header)
-                <th class="px-4 py-3 text-left text-sm font-medium text-gray-600">
+                <th class="px-4 py-3 text-start text-sm font-medium text-gray-600">
                     {{ __($header) }}
                 </th>
                 @endforeach
                 @if (!empty($rows) && !empty($rows[0]['actions']))
-                <th class="px-4 py-3 text-right text-sm font-medium text-gray-600">
-                    {{ __('Actions') }}
+                <th class="px-4 py-3 flex justify-end text-sm font-medium text-gray-600">
+                    <flux:icon.wrench-screwdriver />
                 </th>
                 @endif
             </tr>
@@ -34,7 +34,7 @@ $emptyLabel = $data['emptyLabel'] ?? null;
                 </td>
                 @endforeach
                 @if (!empty($row['actions']))
-                <td class="px-4 py-3 text-right">
+                <td class="px-4 py-3 flex justify-end">
                     @foreach ($row['actions'] as $action => $url)
                     <flux:button
                         size="sm"
@@ -101,14 +101,20 @@ $emptyLabel = $data['emptyLabel'] ?? null;
             x-show="open"
             x-collapse
             class="border-t p-4">
-            <div class="flex justify-start space-y-1">
-                @foreach (array_slice($row['cells'] , 1) as $index=> $cell)
-                <div>
-                    <span class="text-sm text-gray-800"> {{__($headers[$index+1])}}: </span>
-                    <span class="text-sm text-gray-600">{{ $cell }}</span>
+            <div class="divide-y divide-gray-200">
+                @foreach (array_slice($row['cells'], 1) as $index => $cell)
+                <div class="grid grid-cols-[auto,1fr] gap-x-4 py-2">
+                    <div class="text-sm font-medium text-gray-700 whitespace-nowrap">
+                        {{ __($headers[$index + 1]) }}
+                    </div>
+
+                    <div class="text-sm text-gray-900 break-words">
+                        {{ $cell }}
+                    </div>
                 </div>
                 @endforeach
             </div>
+
             <div class="w-full flex justify-end">
                 @if (!empty($row['actions']))
                 <div class="px-4 py-3 text-right">

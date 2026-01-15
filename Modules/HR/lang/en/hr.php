@@ -13,4 +13,10 @@ return [
         'search_placeholder' => 'Search positions',
         'empty' => 'No positions found.',
     ],
+    'grades' => [
+        'title' => 'Job Grades',
+        'create' => 'Create Grade',
+        'search_placeholder' => 'Search job grades',
+        'empty' => 'No job grades found.',
+    ],
 ];

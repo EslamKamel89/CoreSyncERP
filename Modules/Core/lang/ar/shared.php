@@ -5,6 +5,8 @@ return [
     'optional' => 'اختياري',
     'language' => 'اللغة',
     'no_role_assigned' => 'لا يوجد دور مُعيَّن',
+    'action' => 'Action',
+    'empty' => '➖',
     'alerts' => [
         // ✅ Success
         'saved' => 'تم حفظ التغييرات بنجاح.',

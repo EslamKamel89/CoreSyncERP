@@ -5,6 +5,8 @@ namespace Modules\Core\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use Modules\Core\Livewire\Fields\ActiveToggle;
+use Modules\Core\Livewire\Fields\LocalizedInput;
 use Modules\Core\Livewire\Settings\CompanyProfile;
 use Modules\Core\Livewire\TopBar\UserMenu;
 use Nwidart\Modules\Traits\PathNamespace;
@@ -39,6 +41,14 @@ class CoreServiceProvider extends ServiceProvider {
         Livewire::component(
             'core.settings.company-profile',
             CompanyProfile::class
+        );
+        Livewire::component(
+            'core.fields.localized-input',
+            LocalizedInput::class,
+        );
+        Livewire::component(
+            'core.fields.active-toggle',
+            ActiveToggle::class,
         );
     }
 

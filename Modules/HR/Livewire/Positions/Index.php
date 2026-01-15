@@ -14,7 +14,7 @@ class Index extends Component {
     #[Computed]
     public function positions() {
         $positionsPaginator = Position::query()
-            ->with('department')
+            ->with('department', 'grade')
             ->when(
                 $this->search !== '',
                 fn($q) => $q->searchLocalizedJson('name', $this->search)
@@ -25,8 +25,9 @@ class Index extends Component {
             ->map(function (Position $position) {
                 return [
                     'cells' => [
-                        $position->name[app()->getLocale()] ?? '-',
-                        $position->department?->name[app()->getLocale()] ?? '-',
+                        $position->name[app()->getLocale()] ?? __('core::shared.empty'),
+                        $position->department?->name[app()->getLocale()] ?? __('core::shared.empty'),
+                        $position->grade?->name[app()->getLocale()] ?? __('core::shared.empty'),
                     ],
                     'actions' => [
                         'edit' => route('hr.positions.edit', $position),
@@ -35,7 +36,7 @@ class Index extends Component {
             })->toArray();
 
         $listData = $this->makeListData(
-            ['hr::hr.positions.title', 'hr::hr.departments.title'],
+            ['hr::hr.positions.title', 'hr::hr.departments.title', 'hr::hr.grades.title'],
             $rows,
             'hr::hr.positions.empty'
         );

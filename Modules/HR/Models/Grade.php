@@ -5,10 +5,11 @@ namespace Modules\HR\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Modules\Core\Traits\JsonLocalizedSearch;
 use Modules\HR\Database\Factories\GradeFactory;
 
 class Grade extends Model {
-    use HasFactory;
+    use HasFactory, JsonLocalizedSearch;
 
 
     protected $fillable = [

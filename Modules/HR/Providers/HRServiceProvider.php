@@ -34,10 +34,11 @@ class HRServiceProvider extends ServiceProvider {
         $this->registerObservers();
     }
     public function registerLivewire(): void {
+        Livewire::component('hr.departments.form', Departments\Form::class);
         Livewire::component('hr.departments.index', Departments\Index::class);
         Livewire::component('hr.departments.create', Departments\Create::class);
         Livewire::component('hr.departments.edit', Departments\Edit::class);
-
+        Livewire::component('hr.positions.form', Positions\Form::class);
         Livewire::component('hr.positions.index', Positions\Index::class);
         Livewire::component('hr.positions.create', Positions\Create::class);
         Livewire::component('hr.positions.edit', Positions\Edit::class);

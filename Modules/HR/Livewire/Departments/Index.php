@@ -22,7 +22,7 @@ class Index extends Component {
             ->paginate(10);
         $rows = $departmentsPaginator->getCollection()->map(function (Department $department) {
             return [
-                'cells' =>  [$department->name[app()->getLocale()] ?? '-'],
+                'cells' =>  [$department->name[app()->getLocale()] ?? __('core::shared.empty')],
                 'actions' => [
                     'edit' => route('hr.departments.edit', $department),
                 ],

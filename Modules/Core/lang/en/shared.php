@@ -5,6 +5,8 @@ return [
     'optional' => 'Optional',
     'language' => 'Language',
     'no_role_assigned' => 'No role assigned',
+    'action' => 'Action',
+    'empty' => '➖',
     'alerts' => [
 
         // ✅ Success
