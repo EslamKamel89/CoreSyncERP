@@ -102,6 +102,12 @@ return [
                 'route' => 'hr.positions.index',
                 'permission' => 'hr.manage_structure',
             ],
+            [
+                'key'   => 'hr-employees',
+                'label' => 'core::navigation.employees',
+                'route' => 'hr.employees.index',
+                'permission' => 'hr.manage_structure',
+            ],
         ],
     ],
     [

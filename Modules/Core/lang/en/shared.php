@@ -7,6 +7,8 @@ return [
     'no_role_assigned' => 'No role assigned',
     'action' => 'Action',
     'empty' => '➖',
+    'active' => 'Active',
+    'inactive' => 'In active',
     'alerts' => [
 
         // ✅ Success

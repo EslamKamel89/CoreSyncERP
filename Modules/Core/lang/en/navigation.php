@@ -7,4 +7,5 @@ return [
     'hr'          => 'HR',
     'departments' => 'Departments',
     'positions'   => 'Positions',
+    'employees' => 'Employees',
 ];

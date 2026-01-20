@@ -19,4 +19,11 @@ return [
         'search_placeholder' => 'Search job grades',
         'empty' => 'No job grades found.',
     ],
+    'employees' => [
+        'title' => 'Employees',
+        'create' => 'Create Employee',
+        'search_placeholder' => 'Search employees',
+        'empty' => 'No employees found.',
+    ],
+
 ];

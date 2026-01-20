@@ -7,6 +7,8 @@ return [
     'no_role_assigned' => 'لا يوجد دور مُعيَّن',
     'action' => 'Action',
     'empty' => '➖',
+    'active' => 'مفعل',
+    'inactive' => ' غیر مفعل',
     'alerts' => [
         // ✅ Success
         'saved' => 'تم حفظ التغييرات بنجاح.',

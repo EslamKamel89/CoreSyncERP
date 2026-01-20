@@ -24805,6 +24805,21 @@ namespace Modules\HR\Livewire\Positions {
             }
     }
 
+namespace Modules\HR\Livewire\Employees {
+    /**
+     */
+    class Index extends \Livewire\Component {
+            }
+    /**
+     */
+    class Create extends \Livewire\Component {
+            }
+    /**
+     */
+    class Edit extends \Livewire\Component {
+            }
+    }
+
 
 namespace  {
     class App extends \Illuminate\Support\Facades\App {}

@@ -7,10 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Modules\Core\Traits\JsonLocalizedSearch;
 use Modules\HR\Database\Factories\EmployeeFactory;
 
 class Employee extends Model {
-    use HasFactory;
+    use HasFactory, JsonLocalizedSearch;
 
     /**
      * The attributes that are mass assignable.

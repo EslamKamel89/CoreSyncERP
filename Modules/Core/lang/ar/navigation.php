@@ -7,4 +7,5 @@ return [
     'hr'          => 'الموارد البشرية',
     'departments' => 'الأقسام',
     'positions'   => 'المناصب',
+    'employees' => 'الموظفون'
 ];
