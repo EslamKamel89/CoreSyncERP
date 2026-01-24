@@ -9,6 +9,11 @@ return [
     'empty' => '➖',
     'active' => 'مفعل',
     'inactive' => ' غیر مفعل',
+    'all'      => 'الكل',
+    'per_page' => 'عدد النتائج',
+    'status'   => 'الحالة',
+    'sort_by'  => 'ترتيب حسب',
+    'none'     => 'بدون',
     'alerts' => [
         // ✅ Success
         'saved' => 'تم حفظ التغييرات بنجاح.',

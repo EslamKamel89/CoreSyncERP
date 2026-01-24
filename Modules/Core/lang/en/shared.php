@@ -9,6 +9,11 @@ return [
     'empty' => '➖',
     'active' => 'Active',
     'inactive' => 'In active',
+    'all'      => 'All',
+    'per_page' => 'Per page',
+    'status'   => 'Status',
+    'sort_by'  => 'Sort by',
+    'none'     => 'None',
     'alerts' => [
 
         // ✅ Success
