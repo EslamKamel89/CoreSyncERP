@@ -7,6 +7,10 @@ use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Modules\Core\Livewire\Fields\ActiveToggle;
 use Modules\Core\Livewire\Fields\LocalizedInput;
+use Modules\Core\Livewire\Filters\PerPageSelect;
+use Modules\Core\Livewire\Filters\SelectFilter;
+use Modules\Core\Livewire\Filters\SortSelect;
+use Modules\Core\Livewire\Filters\StatusFilter;
 use Modules\Core\Livewire\Settings\CompanyProfile;
 use Modules\Core\Livewire\TopBar\UserMenu;
 use Nwidart\Modules\Traits\PathNamespace;
@@ -49,6 +53,22 @@ class CoreServiceProvider extends ServiceProvider {
         Livewire::component(
             'core.fields.active-toggle',
             ActiveToggle::class,
+        );
+        Livewire::component(
+            'core.filters.per-page-select',
+            PerPageSelect::class,
+        );
+        Livewire::component(
+            'core.filters.status-filter',
+            StatusFilter::class,
+        );
+        Livewire::component(
+            'core.filters.select-filter',
+            SelectFilter::class,
+        );
+        Livewire::component(
+            'core.filters.sort-select',
+            SortSelect::class,
         );
     }
 
