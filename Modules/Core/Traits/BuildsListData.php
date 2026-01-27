@@ -17,7 +17,7 @@ namespace Modules\Core\Traits;
  */
 
 trait BuildsListData {
-    public function makeListData(
+    static public function makeListData(
         array $headers,
         array $rows,
         string $emptyLabel

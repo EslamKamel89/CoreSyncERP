@@ -185,9 +185,15 @@ namespace Modules\HR\Models{
  * @property-read \Modules\HR\Models\Position $position
  * @property-read \App\Models\User|null $user
  * @method static \Modules\HR\Database\Factories\EmployeeFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByDepartment(?int $departmentId)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByPosition(?int $positionId)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByScope(?string $status)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee search(?string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee searchLocalizedJson(string $column, string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee sort(?string $column = null, string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereBaseSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee whereCreatedBy($value)
@@ -228,6 +234,7 @@ namespace Modules\HR\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade searchLocalizedJson(string $column, string $search)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereBaseSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereCreatedBy($value)
