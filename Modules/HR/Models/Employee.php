@@ -82,7 +82,7 @@ class Employee extends Model {
         };
     }
     public function scopeSort(Builder $query, ?string $column = null, string $direction = 'asc'): Builder {
-        return $column  ? $query->orderBy($column, $direction) : $query;
+        return $column  ? $query->orderBy($column, $direction) : $query->orderBy('id');
     }
     public static function indexQuery(array $params): Builder {
         return self::query()

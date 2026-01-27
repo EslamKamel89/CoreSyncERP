@@ -144,10 +144,13 @@ namespace Modules\HR\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\HR\Models\Position> $positions
  * @property-read int|null $positions_count
  * @method static \Modules\HR\Database\Factories\DepartmentFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Department filterByStatus(?string $status)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Department search(?string $search)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department searchLocalizedJson(string $column, string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Department sort(?string $column = null, string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Department whereExternalId($value)
@@ -187,7 +190,7 @@ namespace Modules\HR\Models{
  * @method static \Modules\HR\Database\Factories\EmployeeFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByDepartment(?int $departmentId)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByPosition(?int $positionId)
- * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByScope(?string $status)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee filterByStatus(?string $status)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Employee query()
