@@ -7,38 +7,48 @@ use Livewire\Component;
 use Livewire\Attributes\Computed;
 use Modules\Core\Traits\BuildsListData;
 use Modules\HR\Models\Department;
+use Livewire\Attributes\On;
+use Modules\Core\Livewire\Filters\PerPageSelect;
+use Modules\Core\Livewire\Filters\StatusFilter;
+use Livewire\WithPagination;
 
 class Index extends Component {
-    use BuildsListData;
+    use BuildsListData, WithPagination;
     public string $search = '';
-
+    public int $perPage = 10;
+    public array $filters = [
+        'status' => null,
+    ];
+    public ?string $sortColumn = null;
+    public string $sortDirection = 'asc';
     #[Computed]
     public function departments() {
-        $locales = array_keys(config('core.locales.availableLocales'));
-
-        $departmentsPaginator =  Department::query()
-            ->when($this->search !== '',  fn($q) => $q->searchLocalizedJson('name', $this->search))
-            ->orderBy('id')
-            ->paginate(10);
-        $rows = $departmentsPaginator->getCollection()->map(function (Department $department) {
-            return [
-                'cells' =>  [$department->name[app()->getLocale()] ?? __('core::shared.empty')],
-                'actions' => [
-                    'edit' => route('hr.departments.edit', $department),
-                ],
-            ];
-        })->toArray();
-        $listData = $this->makeListData(
-            headers: ['hr::hr.departments.title'],
-            rows: $rows,
-            emptyLabel: 'hr::hr.departments.empty'
-        );
+        $query = Department::indexQuery([
+            'search' => $this->search,
+            'status' => $this->filters['status'],
+            'sort_column' => $this->sortColumn,
+            'sort_direction' => $this->sortDirection,
+        ]);
+        $paginator = $query->paginate($this->perPage);
         return [
-            'list' => $listData,
-            'links' => $departmentsPaginator->links(),
+            'list' => Department::toListData($paginator),
+            'links' => $paginator->links(),
         ];
     }
+    #[On(PerPageSelect::UPDATED)]
+    public function onPerPageUpdate(int $perPage) {
+        $this->perPage = $perPage;
+        $this->resetPage();
+    }
+    #[On(StatusFilter::UPDATED)]
+    public function onStatusFilterUpdate(?string $value) {
+        $this->filters['status'] = $value;
+        $this->resetPage();
+    }
     public function render() {
-        return view('hr::livewire.departments.index');
+        $sortOptions = [
+            'status' => __('hr::employees.fields.status')
+        ];
+        return view('hr::livewire.departments.index', ['sortOptions' => $sortOptions]);
     }
 }
