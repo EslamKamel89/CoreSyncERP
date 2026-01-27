@@ -28,70 +28,18 @@ class Index extends Component {
     public string $sortDirection = 'asc';
     #[Computed]
     public function employees() {
-        $query = Employee::query()
-            ->with(['department', 'position', 'grade'])
-            ->when($this->search !== '', function ($q) {
-                return $q->where('name', 'LIKE', "%{$this->search}%")
-                    ->orWhere('employee_number', 'LIKE', "%{$this->search}%")
-                    ->orWhere('name', 'LIKE', "%{$this->search}%")
-                    ->orWhere(fn($sub) => $sub->searchLocalizedJson('display_name', $this->search));
-            })->when($this->filters['department_id'], function ($q) {
-                return $q->where('department_id', $this->filters['department_id']);
-            })->when($this->filters['position_id'], function ($q) {
-                return $q->where('position_id', $this->filters['position_id']);
-            });
-        if ($this->filters['status'] === 'active') {
-            $query->where('is_active', true);
-        } elseif ($this->filters['status'] === 'inactive') {
-            $query->where('is_active', false);
-        }
-        if ($this->sortColumn) {
-            $query->orderBy($this->sortColumn, $this->sortDirection);
-        } else {
-            $query->orderBy('id');
-        }
-        $employeesPaginator = $query->paginate($this->perPage);
-        $rows = $employeesPaginator->getCollection()
-            ->map(function (Employee $employee) {
-                return [
-                    'cells' => [
-                        $employee->department?->name[app()->getLocale()] ?? __('core::shared.empty'),
-                        $employee->position?->name[app()->getLocale()] ?? __('core::shared.empty'),
-                        $employee->grade?->name[app()->getLocale()] ?? __('core::shared.empty'),
-                        $employee->name,
-                        $employee->employee_number,
-                        $employee->display_name[app()->getLocale()] ?? __('core::shared.empty'),
-                        $employee->hire_date?->format('Y-m-d') ?? __('core::shared.empty'),
-                        $employee->base_salary !== null
-                            ? number_format($employee->base_salary, 2)
-                            : __('core::shared.empty'),
-                        $employee->is_active
-                            ? __('core::shared.active')
-                            : __('core::shared.inactive'),
-                    ],
-                    'actions' => [
-                        'edit' => route('hr.employees.edit', $employee),
-                    ],
-                ];
-            })->toArray();
-        $listData = $this->makeListData(
-            [
-                'hr::hr.departments.title',
-                'hr::hr.positions.title',
-                'hr::hr.grades.title',
-                'hr::employees.fields.name',
-                'hr::employees.fields.employee_number',
-                'hr::employees.fields.display_name',
-                'hr::employees.fields.hire_date',
-                'hr::employees.fields.base_salary',
-                'hr::employees.fields.status',
-            ],
-            $rows,
-            'hr::hr.employees.empty'
-        );
+        $query = Employee::indexQuery([
+            'search' => $this->search,
+            'department_id' => $this->filters['department_id'],
+            'position_id' => $this->filters['position_id'],
+            'status' => $this->filters['status'],
+            'sort_column' => $this->sortColumn,
+            'sort_direction' => $this->sortDirection,
+        ]);
+        $paginator = $query->paginate($this->perPage);
         return [
-            'list'  => $listData,
-            'links' => $employeesPaginator->links(),
+            'list'  => Employee::toListData($paginator),
+            'links' => $paginator->links(),
         ];
     }
     #[On(PerPageSelect::UPDATED)]
