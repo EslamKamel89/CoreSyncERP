@@ -16,6 +16,7 @@ return new class extends Migration {
             $this->locale($table, 'name');
             $this->money($table, 'base_salary');
             $this->whiteLabelColumns($table);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
