@@ -13,6 +13,7 @@ use RecursiveIteratorIterator;
 use Modules\HR\Livewire\Departments;
 use Modules\HR\Livewire\Positions;
 use Modules\HR\Livewire\Employees;
+use Modules\HR\Livewire\Grades;
 
 class HRServiceProvider extends ServiceProvider {
     use PathNamespace;
@@ -47,6 +48,10 @@ class HRServiceProvider extends ServiceProvider {
         Livewire::component('hr.employees.index', Employees\Index::class);
         Livewire::component('hr.employees.create', Employees\Create::class);
         Livewire::component('hr.employees.edit', Employees\Edit::class);
+        Livewire::component('hr.grades.form', Grades\Form::class);
+        Livewire::component('hr.grades.index', Grades\Index::class);
+        Livewire::component('hr.grades.create', Grades\Create::class);
+        Livewire::component('hr.grades.edit', Grades\Edit::class);
     }
     public function registerObservers(): void {
         Employee::observe(EmployeeObserver::class);
