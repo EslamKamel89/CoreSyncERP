@@ -5,6 +5,7 @@ use Modules\HR\Http\Controllers\HRController;
 use Modules\HR\Livewire\Departments;
 use Modules\HR\Livewire\Positions;
 use Modules\HR\Livewire\Employees;
+use Modules\HR\Livewire\Grades;
 use Spatie\Permission\Middleware\PermissionMiddleware;
 
 Route::middleware(['auth', PermissionMiddleware::using('hr.manage_structure')])
@@ -20,4 +21,7 @@ Route::middleware(['auth', PermissionMiddleware::using('hr.manage_structure')])
         Route::get('employees', Employees\Index::class)->name('employees.index');
         Route::get('employees/create', Employees\Create::class)->name('employees.create');
         Route::get('employees/{employee}/edit', Employees\Edit::class)->name('employees.edit');
+        Route::get('grades', Grades\Index::class)->name('grades.index');
+        Route::get('grades/create', Grades\Create::class)->name('grades.create');
+        Route::get('grades/{grade}/edit', Grades\Edit::class)->name('grades.edit');
     });
