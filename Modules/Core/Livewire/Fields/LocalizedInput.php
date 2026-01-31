@@ -11,6 +11,7 @@ class LocalizedInput extends Component {
     public array $value;
     public string $field;
     public string $label;
+    public bool $required = true;
     #[Reactive]
     public ?string $error;
     public function mount(string $field, string $label, ?array $value = null, ?string $error = null) {
