@@ -25,5 +25,4 @@ return [
         'search_placeholder' => 'Search employees',
         'empty' => 'No employees found.',
     ],
-
 ];
