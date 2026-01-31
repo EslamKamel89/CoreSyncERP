@@ -8,4 +8,5 @@ return [
     'departments' => 'Departments',
     'positions'   => 'Positions',
     'employees' => 'Employees',
+    'grades' => 'Grades',
 ];
