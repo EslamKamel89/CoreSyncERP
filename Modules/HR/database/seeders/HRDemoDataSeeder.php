@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Modules\HR\Models\Department;
 use Modules\HR\Models\Position;
 use Modules\HR\Models\Employee;
+use Modules\HR\Models\Grade;
 use Carbon\Carbon;
 
 class HRDemoDataSeeder extends Seeder {
@@ -32,6 +33,41 @@ class HRDemoDataSeeder extends Seeder {
                 ['name->en' => $name['en']],
                 [
                     'name' => $name,
+                    'is_active' => true,
+                ]
+            );
+        }
+
+        // -----------------------------
+        // Grades
+        // -----------------------------
+        $grades = [
+            'junior' => [
+                'name' => ['en' => 'Junior', 'ar' => 'مبتدئ'],
+                'base_salary' => 4000,
+            ],
+            'mid' => [
+                'name' => ['en' => 'Mid Level', 'ar' => 'متوسط'],
+                'base_salary' => 6500,
+            ],
+            'senior' => [
+                'name' => ['en' => 'Senior', 'ar' => 'خبير'],
+                'base_salary' => 9000,
+            ],
+            'lead' => [
+                'name' => ['en' => 'Lead', 'ar' => 'قائد'],
+                'base_salary' => 12000,
+            ],
+        ];
+
+        $gradeModels = [];
+
+        foreach ($grades as $key => $data) {
+            $gradeModels[$key] = Grade::firstOrCreate(
+                ['name->en' => $data['name']['en']],
+                [
+                    'name' => $data['name'],
+                    'base_salary' => $data['base_salary'],
                     'is_active' => true,
                 ]
             );
@@ -90,6 +126,7 @@ class HRDemoDataSeeder extends Seeder {
                 'display_name' => ['en' => 'Ahmed Hassan', 'ar' => 'أحمد حسن'],
                 'department' => 'hr',
                 'position_en' => 'HR Manager',
+                'grade' => 'senior',
                 'hire_date' => '2019-03-15',
                 'base_salary' => 8500,
             ],
@@ -98,6 +135,7 @@ class HRDemoDataSeeder extends Seeder {
                 'display_name' => ['en' => 'Sara Ali', 'ar' => 'سارة علي'],
                 'department' => 'finance',
                 'position_en' => 'Accountant',
+                'grade' => 'mid',
                 'hire_date' => '2020-07-01',
                 'base_salary' => 6500,
             ],
@@ -106,6 +144,7 @@ class HRDemoDataSeeder extends Seeder {
                 'display_name' => ['en' => 'Omar Khaled', 'ar' => 'عمر خالد'],
                 'department' => 'engineering',
                 'position_en' => 'Backend Engineer',
+                'grade' => 'senior',
                 'hire_date' => '2021-01-10',
                 'base_salary' => 9000,
             ],
@@ -114,6 +153,7 @@ class HRDemoDataSeeder extends Seeder {
                 'display_name' => ['en' => 'Lina Youssef', 'ar' => 'لينا يوسف'],
                 'department' => 'engineering',
                 'position_en' => 'Frontend Engineer',
+                'grade' => 'mid',
                 'hire_date' => '2022-06-20',
                 'base_salary' => 7800,
             ],
@@ -122,6 +162,7 @@ class HRDemoDataSeeder extends Seeder {
                 'display_name' => ['en' => 'Mohamed Samir', 'ar' => 'محمد سمير'],
                 'department' => 'sales',
                 'position_en' => 'Sales Executive',
+                'grade' => 'junior',
                 'hire_date' => '2023-02-01',
                 'base_salary' => 6000,
             ],
@@ -133,6 +174,8 @@ class HRDemoDataSeeder extends Seeder {
                 ->where('name->en', $data['position_en'])
                 ->first();
 
+            $grade = $gradeModels[$data['grade']] ?? null;
+
             Employee::firstOrCreate(
                 ['name' => $data['name']],
                 [
@@ -140,6 +183,7 @@ class HRDemoDataSeeder extends Seeder {
                     'display_name' => $data['display_name'],
                     'department_id' => $department->id,
                     'position_id' => $position?->id,
+                    'grade_id' => $grade?->id,
                     'hire_date' => Carbon::parse($data['hire_date']),
                     'base_salary' => $data['base_salary'],
                     'is_active' => true,
