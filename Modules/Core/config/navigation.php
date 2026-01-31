@@ -103,6 +103,12 @@ return [
                 'permission' => 'hr.manage_structure',
             ],
             [
+                'key'   => 'hr-grades',
+                'label' => 'core::navigation.grades',
+                'route' => 'hr.grades.index',
+                'permission' => 'hr.manage_structure',
+            ],
+            [
                 'key'   => 'hr-employees',
                 'label' => 'core::navigation.employees',
                 'route' => 'hr.employees.index',
