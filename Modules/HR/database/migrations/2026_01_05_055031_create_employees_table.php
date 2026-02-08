@@ -20,7 +20,7 @@ return new class extends Migration {
             $table->string('employee_number')->unique();
             $this->locale($table, 'display_name', required: false);
             $table->date('hire_date');
-            $this->money($table, 'base_salary');
+            $this->money($table, 'base_salary', true);
             $table->boolean('is_active')->default(true);
             $this->whiteLabelColumns($table);
             $table->softDeletes();
