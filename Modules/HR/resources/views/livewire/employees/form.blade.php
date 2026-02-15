@@ -18,10 +18,10 @@
         :label="__('hr::employees.fields.department')"
         :required="true">
         <flux:select
-            wire:model.defer="department_id"
+            wire:model.live="department_id"
             error="department_id">
             <option value="">{{ __('hr::employees.placeholders.department') }}</option>
-            @foreach ($this->departments as $department)
+            @foreach ($departments as $department)
             <option value="{{ $department->id }}">
                 {{ $department->name[app()->getLocale()] ?? '-' }}
             </option>
@@ -33,15 +33,17 @@
         :label="__('hr::employees.fields.position')"
         :required="true">
         <flux:select
-            wire:model.defer="position_id"
+            wire:model.live="position_id"
+            description="{{ $department_id ? '':__('hr::employees.create.select_department_first') }}"
             error="position_id">
             <option value="">{{ __('hr::employees.placeholders.position') }}</option>
-            @foreach ($this->positions as $position)
+            @foreach ($positions as $position)
             <option value="{{ $position->id }}">
                 {{ $position->name[app()->getLocale()] ?? '-' }}
             </option>
             @endforeach
         </flux:select>
+
     </x-core::shared.form-field>
 
     <x-core::shared.form-field

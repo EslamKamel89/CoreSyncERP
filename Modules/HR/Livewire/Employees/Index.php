@@ -83,12 +83,18 @@ class Index extends Component {
                 'value' => $row->id,
             ];
         })->toArray();
-        $positions = Position::select(['id', 'name',])->get()->map(function ($row) {
-            return [
-                'label' => $row->name[app()->getLocale()],
-                'value' => $row->id,
-            ];
-        })->toArray();
+        $positions =
+            Position::select(['id', 'name',])
+            ->when($this->filters['department_id'] ?? null, function ($q, $value) {
+                $q->where('department_id', $value);
+            })
+
+            ->get()->map(function ($row) {
+                return [
+                    'label' => $row->name[app()->getLocale()],
+                    'value' => $row->id,
+                ];
+            })->toArray();
         $sortOptions = [
             'hire_date' => __('hr::employees.fields.hire_date'),
             'base_salary' => __('hr::employees.fields.base_salary')
