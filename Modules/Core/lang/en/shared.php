@@ -15,6 +15,8 @@ return [
     'sort_by'  => 'Sort by',
     'none'     => 'None',
     'created_at' => 'Date of creation',
+    'system' => 'System',
+    'custom' => 'Custom',
     'alerts' => [
 
         // ✅ Success
