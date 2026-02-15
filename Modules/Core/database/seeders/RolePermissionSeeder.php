@@ -15,6 +15,7 @@ class RolePermissionSeeder extends Seeder {
 
     public function run(): void {
         $permissions = [
+            'system.manage_roles',
             'core.manage_settings',
             'hr.access',
             'hr.manage_structure',
