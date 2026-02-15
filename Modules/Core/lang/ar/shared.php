@@ -15,6 +15,8 @@ return [
     'sort_by'  => 'ترتيب حسب',
     'none'     => 'بدون',
     'created_at' => 'تاريخ الإنشاء',
+    'system' => 'نظام',
+    'custom' => 'مخصص',
     'alerts' => [
         // ✅ Success
         'saved' => 'تم حفظ التغييرات بنجاح.',
