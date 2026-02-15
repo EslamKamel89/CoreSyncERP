@@ -103,16 +103,15 @@ class Form extends Component {
         ]);
     }
 
-    // #[Computed]
-    // public function departments() {
-    //     return Department::where('is_active', true)->orderBy('id')->get();
-    // }
+    #[Computed]
+    public function departments() {
+        return Department::where('is_active', true)->orderBy('id')->get();
+    }
 
-    // #[Computed]
-    // public function positions() {
-    //     info(Position::where('is_active', true)->where('department_id', $this->department_id)->orderBy('id')->get());
-    //     return Position::where('is_active', true)->where('department_id', $this->department_id)->orderBy('id')->get();
-    // }
+    #[Computed]
+    public function positions() {
+        return Position::where('is_active', true)->where('department_id', $this->department_id)->orderBy('id')->get();
+    }
 
     #[Computed]
     public function grades() {
@@ -120,13 +119,8 @@ class Form extends Component {
     }
 
     public function render() {
-        $departments =  Department::where('is_active', true)->orderBy('id')->get();
-        $positions = Position::where('is_active', true)
-            ->where('department_id', $this->department_id)->orderBy('id')->get();
-        info($positions);
         return view(
             'hr::livewire.employees.form',
-            ['departments' => $departments, 'positions' => $positions]
         );
     }
 }

@@ -21,7 +21,7 @@
             wire:model.live="department_id"
             error="department_id">
             <option value="">{{ __('hr::employees.placeholders.department') }}</option>
-            @foreach ($departments as $department)
+            @foreach ($this->departments as $department)
             <option value="{{ $department->id }}">
                 {{ $department->name[app()->getLocale()] ?? '-' }}
             </option>
@@ -37,7 +37,7 @@
             description="{{ $department_id ? '':__('hr::employees.create.select_department_first') }}"
             error="position_id">
             <option value="">{{ __('hr::employees.placeholders.position') }}</option>
-            @foreach ($positions as $position)
+            @foreach ($this->positions as $position)
             <option value="{{ $position->id }}">
                 {{ $position->name[app()->getLocale()] ?? '-' }}
             </option>
