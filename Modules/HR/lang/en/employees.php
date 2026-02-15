@@ -4,6 +4,7 @@ return [
     'create' => [
         'title' => 'Create Employee',
         'description' => 'Add a new employee and assign them to the organization structure.',
+        "select_department_first" => 'Please select a department first'
     ],
 
     'edit' => [

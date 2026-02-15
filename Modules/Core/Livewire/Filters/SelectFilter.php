@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Livewire\Filters;
 
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
 class SelectFilter extends Component {
@@ -9,6 +10,7 @@ class SelectFilter extends Component {
     public string $name;
     public  $value = 'all';
     // options:[{'label':'Department', 'value':2}]
+    #[Reactive]
     public array $options = [];
     public string  $label;
     public bool $showTaps = false;

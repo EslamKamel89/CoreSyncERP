@@ -4,6 +4,7 @@ return [
     'create' => [
         'title' => 'إضافة موظف',
         'description' => 'إضافة موظف جديد وربطه بالهيكل التنظيمي.',
+        "select_department_first" => 'يرجى اختيار القسم أولاً'
     ],
 
     'edit' => [
