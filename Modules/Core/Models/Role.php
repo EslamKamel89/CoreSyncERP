@@ -51,7 +51,7 @@ class Role extends SpatieRole {
                             ? __('core::shared.system')
                             : __('core::shared.custom'),
                     ],
-                    'actions' => [
+                    'actions' => $role->meta['system'] ? [] : [
                         'edit' => route('core.roles.edit', $role),
                     ],
                 ];

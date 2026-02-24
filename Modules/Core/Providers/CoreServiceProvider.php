@@ -16,6 +16,7 @@ use Modules\Core\Livewire\TopBar\UserMenu;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use Modules\Core\Livewire\Roles;
 
 class CoreServiceProvider extends ServiceProvider {
     use PathNamespace;
@@ -69,6 +70,24 @@ class CoreServiceProvider extends ServiceProvider {
         Livewire::component(
             'core.filters.sort-select',
             SortSelect::class,
+        );
+        Livewire::component(
+            'core.roles.index',
+            Roles\Index::class,
+        );
+
+        Livewire::component(
+            'core.roles.form',
+            Roles\Form::class,
+        );
+
+        Livewire::component(
+            'core.roles.edit',
+            Roles\Edit::class,
+        );
+        Livewire::component(
+            'core.roles.create',
+            Roles\Create::class,
         );
     }
 
