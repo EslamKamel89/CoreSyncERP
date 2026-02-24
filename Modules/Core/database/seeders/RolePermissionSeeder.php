@@ -4,8 +4,8 @@ namespace Modules\Core\database\seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
+use Modules\Core\Models\Permission;
+use Modules\Core\Models\Role;
 
 class RolePermissionSeeder extends Seeder {
     /**
@@ -24,17 +24,27 @@ class RolePermissionSeeder extends Seeder {
         ];
 
         foreach ($permissions as $permission) {
-            Permission::firstOrCreate(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission], [
+                'meta' => ['system' => true],
+            ]);
         }
 
         /** @var Role $admin */
-        $admin = Role::firstOrCreate(['name' => 'Admin']);
+        $admin = Role::firstOrCreate(['name' => 'Admin'], [
+            'meta' => ['system' => true],
+        ]);
         /** @var Role $hr */
-        $hr = Role::firstOrCreate(['name' => 'HR Manager']);
+        $hr = Role::firstOrCreate(['name' => 'HR Manager'], [
+            'meta' => ['system' => true],
+        ]);
         /** @var Role $inventory */
-        $inventory = Role::firstOrCreate(['name' => 'Inventory Manager']);
+        $inventory = Role::firstOrCreate(['name' => 'Inventory Manager'], [
+            'meta' => ['system' => true],
+        ]);
         /** @var Role $accountant */
-        $accountant = Role::firstOrCreate(['name' => 'Accountant']);
+        $accountant = Role::firstOrCreate(['name' => 'Accountant'], [
+            'meta' => ['system' => true],
+        ]);
 
         $admin->givePermissionTo(Permission::all());
 

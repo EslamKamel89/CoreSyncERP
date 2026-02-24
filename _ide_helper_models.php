@@ -101,6 +101,78 @@ namespace Modules\Core\Models{
 namespace Modules\Core\Models{
 /**
  * @property int $id
+ * @property string $name
+ * @property string $guard_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $external_id
+ * @property array<array-key, mixed>|null $meta
+ * @property string $status
+ * @property int|null $created_by
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Role> $roles
+ * @property-read int|null $roles_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission permission($permissions, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission role($roles, $guard = null, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereGuardName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereMeta($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission withoutPermission($permissions)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Permission withoutRole($roles, $guard = null)
+ */
+	class Permission extends \Eloquent {}
+}
+
+namespace Modules\Core\Models{
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $guard_name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property string|null $external_id
+ * @property array<array-key, mixed>|null $meta
+ * @property string $status
+ * @property int|null $created_by
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \Spatie\Permission\Models\Permission> $permissions
+ * @property-read int|null $permissions_count
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role permission($permissions, $without = false)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role search(?string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role sort(?string $column = null, string $direction = 'asc')
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereCreatedBy($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereExternalId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereGuardName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereMeta($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Role withoutPermission($permissions)
+ */
+	class Role extends \Eloquent {}
+}
+
+namespace Modules\Core\Models{
+/**
+ * @property int $id
  * @property int|null $company_id
  * @property string $name
  * @property string|null $slug
@@ -174,7 +246,7 @@ namespace Modules\HR\Models{
  * @property string $employee_number
  * @property array<array-key, mixed>|null $display_name
  * @property \Illuminate\Support\Carbon $hire_date
- * @property numeric $base_salary
+ * @property numeric|null $base_salary
  * @property bool $is_active
  * @property string|null $external_id
  * @property array<array-key, mixed>|null $meta
@@ -227,6 +299,7 @@ namespace Modules\HR\Models{
  * @property array<array-key, mixed>|null $meta
  * @property string $status
  * @property int|null $created_by
+ * @property bool $is_active
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\HR\Models\Employee> $employees
@@ -234,15 +307,19 @@ namespace Modules\HR\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Modules\HR\Models\Position> $positions
  * @property-read int|null $positions_count
  * @method static \Modules\HR\Database\Factories\GradeFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade filterByStatus(?string $status)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade search(?string $search)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade searchLocalizedJson(string $column, string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade sort(?string $column, string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereBaseSalary($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereExternalId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereIsActive($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereMeta($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Grade whereStatus($value)
@@ -269,10 +346,14 @@ namespace Modules\HR\Models{
  * @property-read int|null $employees_count
  * @property-read \Modules\HR\Models\Grade|null $grade
  * @method static \Modules\HR\Database\Factories\PositionFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Position filterByDepartment(?int $departmentId)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Position filterByStatus(?string $status)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Position search(?string $search)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position searchLocalizedJson(string $column, string $search)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Position sort(?string $column, string $direction = 'asc')
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereCreatedBy($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereDepartmentId($value)
@@ -284,6 +365,7 @@ namespace Modules\HR\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereStatus($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Position whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Position withRelations()
  */
 	class Position extends \Eloquent {}
 }

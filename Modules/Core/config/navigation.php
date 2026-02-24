@@ -85,6 +85,20 @@ return [
         'icon'  => 'home',
     ],
     [
+        'key'   => 'administration',
+        'label' => 'core::navigation.administration',
+        'icon'  => 'shield-check',
+        'permission' => 'system.manage_roles',
+        'children' => [
+            [
+                'key'   => 'admin-roles',
+                'label' => 'core::navigation.roles',
+                'route' => 'core.roles.index',
+                'permission' => 'system.manage_roles',
+            ],
+        ],
+    ],
+    [
         'key'   => 'hr',
         'label' => 'core::navigation.hr',
         'icon'  => 'users',
