@@ -9,4 +9,6 @@ return [
     'positions'   => 'Positions',
     'employees' => 'Employees',
     'grades' => 'Grades',
+    'administration' => 'Administration',
+    'roles' => 'Roles',
 ];

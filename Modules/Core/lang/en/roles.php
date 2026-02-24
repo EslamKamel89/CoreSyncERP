@@ -19,7 +19,9 @@ return [
     'fields' => [
         'name' => 'Role name',
         'permissions_count' => 'Permissions count',
+        'permissions' => 'Permissions',
         'type' => 'Role type',
+        'status' => 'Status'
     ],
 
     'placeholders' => [
@@ -27,4 +29,6 @@ return [
     ],
 
     'empty' => 'No roles found.',
+    'title' => 'Roles',
+    'search_placeholder' => 'Search roles',
 ];
