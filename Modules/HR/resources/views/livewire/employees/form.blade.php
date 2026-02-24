@@ -1,7 +1,7 @@
 <form wire:submit.prevent="save" class="space-y-6">
     <x-core::shared.form-field
         :label="__('hr::employees.fields.name')"
-        :required="true">
+        :required="true" error="name">
         <flux:input
             wire:model.defer="name"
             error="name" />
@@ -16,7 +16,7 @@
 
     <x-core::shared.form-field
         :label="__('hr::employees.fields.department')"
-        :required="true">
+        :required="true" error="department_id">
         <flux:select
             wire:model.live="department_id"
             error="department_id">
@@ -63,7 +63,7 @@
 
     <x-core::shared.form-field
         :label="__('hr::employees.fields.hire_date')"
-        :required="true">
+        :required="true" error="hire_date">
         <flux:input
             type="date"
             wire:model.defer="hire_date"
@@ -72,7 +72,7 @@
 
     <x-core::shared.form-field
         :label="__('hr::employees.fields.base_salary')"
-        :required="false">
+        :required="false" error="base_salary">
         <flux:input
             type="number"
             step="0.01"

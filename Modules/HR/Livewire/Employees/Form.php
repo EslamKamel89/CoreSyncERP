@@ -58,7 +58,7 @@ class Form extends Component {
             rules: [
                 // 'employee_number' => ['required', 'string', 'max:50'],
                 'name'            => ['required', 'string', 'max:255'],
-                'display_name'    => ['nullable', 'array'],
+                'display_name'    => ['required', 'array'],
                 'display_name.*'  => ['nullable', 'string', 'max:255'],
 
                 'department_id' => ['required', 'exists:departments,id'],
@@ -94,6 +94,7 @@ class Form extends Component {
         return array_merge($attributes, [
             'employee_number' => __('hr::employees.fields.employee_number'),
             'name'            => __('hr::employees.fields.name'),
+            'display_name'            => __('hr::employees.fields.name'),
             'department_id'   => __('hr::employees.fields.department'),
             'position_id'     => __('hr::employees.fields.position'),
             'grade_id'        => __('hr::employees.fields.grade'),

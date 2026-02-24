@@ -7,7 +7,7 @@
         :required="true" />
     <x-core::shared.form-field
         :label="__('hr::positions.fields.department')"
-        :required="true">
+        :required="true" error="department_id">
         <flux:select wire:model.defer="department_id" error="department_id">
             <option value="">{{ __('hr::positions.placeholders.department') }}</option>
             @foreach ($this->departments as $department)
