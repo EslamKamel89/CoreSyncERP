@@ -9,4 +9,6 @@ return [
     'positions'   => 'المناصب',
     'employees' => 'الموظفون',
     'grades' => 'الدرجات الوظيفية',
+    'administration' => 'الإدارة',
+    'roles' => 'الأدوار',
 ];

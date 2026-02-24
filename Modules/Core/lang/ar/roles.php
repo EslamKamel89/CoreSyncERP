@@ -19,7 +19,9 @@ return [
     'fields' => [
         'name' => 'اسم الدور',
         'permissions_count' => 'عدد الصلاحيات',
+        'permissions' => ' الصلاحيات',
         'type' => 'نوع الدور',
+        'status' => 'مفعل'
     ],
 
     'placeholders' => [
@@ -27,4 +29,6 @@ return [
     ],
 
     'empty' => 'لا توجد أدوار.',
+    'title' => 'الأدوار',
+    'search_placeholder' => 'البحث في الأدوار',
 ];
