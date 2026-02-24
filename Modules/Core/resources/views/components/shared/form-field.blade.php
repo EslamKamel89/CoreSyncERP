@@ -1,6 +1,7 @@
 @props([
 'label',
 'required' => false,
+'error'=>false,
 ])
 
 <div class="space-y-1">
@@ -16,4 +17,7 @@
     <div>
         {{ $slot }}
     </div>
+    @if ($error)
+    <flux:error :name="$error" />
+    @endif
 </div>

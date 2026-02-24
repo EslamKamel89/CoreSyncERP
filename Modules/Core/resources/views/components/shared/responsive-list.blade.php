@@ -17,7 +17,7 @@ $emptyLabel = $data['emptyLabel'] ?? null;
                     {{ __($header) }}
                 </th>
                 @endforeach
-                @if (!empty($rows) && !empty($rows[0]['actions']))
+                @if (!empty($rows))
                 <th class="px-4 py-3 flex justify-end text-sm font-medium text-gray-600">
                     <flux:icon.wrench-screwdriver />
                 </th>
